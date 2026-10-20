@@ -16,6 +16,8 @@ html, body {
   flex-direction: column;
   align-items: center;
   gap: 28px;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 .hidden {
@@ -23,14 +25,14 @@ html, body {
 }
 
 /* ==========================================
-   🖼️ 主遊戲卡片 (橫向更寬敞)
+   🖼️ 主遊戲卡片
    ========================================== */
 .game-card {
   background: #2b323d;
   border-radius: 26px;
   padding: 48px 44px;
   max-width: 960px;
-  width: 95%;
+  width: 100%;
   border: 4px solid #ffffff;
   box-shadow: 0 12px 0px #d89c5c, 0 20px 35px rgba(0, 0, 0, 0.4);
   text-align: center;
@@ -38,59 +40,41 @@ html, body {
 }
 
 /* ==========================================
-   🎯 首頁：文字在左、圖片在右
+   🎯 首頁與遊戲中畫面配置（圖片在上、文字在下）
    ========================================== */
-.start-content-layout {
-  display: flex;
-  flex-direction: row;
-  align-items: stretch;
-  gap: 30px;
-  margin: 24px 0;
-  text-align: left;
-}
-
-.start-text-side {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.start-img-side {
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-}
-
-/* ==========================================
-   🎯 遊戲中主畫面：文字在左、圖片在右
-   ========================================== */
+.start-content-layout,
 .game-content-layout {
   display: flex;
-  flex-direction: row;
-  align-items: stretch;
-  gap: 30px;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
   margin: 20px 0;
   text-align: left;
+  width: 100%;
 }
 
+.start-text-side,
 .game-text-side {
-  flex: 1;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   gap: 20px;
+  min-width: 0;
 }
 
+.start-img-side,
 .game-img-side {
-  flex-shrink: 0;
   display: flex;
-  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 
 .story-text-wrapper {
   flex: 1;
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .story-text {
@@ -109,13 +93,15 @@ html, body {
   flex-direction: column;
   justify-content: space-between;
   margin: 0;
+  word-break: break-word;
+  width: 100%;
 }
 
-/* 圖片框架樣式 */
+/* 💡 讓外框嚴格貼合圖片大小的設定 */
 .story-img-container {
   display: inline-block;
   width: auto;
-  max-width: 320px;
+  max-width: 100%;
   border-radius: 18px;
   overflow: hidden;
   border: 3px solid #3a4454;
@@ -125,9 +111,10 @@ html, body {
 }
 
 .story-img {
-  width: 100%;
+  width: auto;
   height: auto;
-  max-height: 480px;
+  max-width: 100%;
+  max-height: 380px;
   display: block;
   object-fit: contain;
   margin: 0 auto;
@@ -141,8 +128,8 @@ html, body {
   flex-direction: row;
   gap: 24px;
   max-width: 960px;
-  width: 95%;
-  align-items: stretch; /* 讓左右兩張大卡片高度一致 */
+  width: 100%;
+  align-items: stretch;
 }
 
 .ending-grid-layout .game-card {
@@ -152,11 +139,11 @@ html, body {
   margin: 0;
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* 上中下撐開 */
+  justify-content: space-between;
   text-align: center;
 }
 
-/* 標題與簡介區塊 */
+/* 標題與按鈕樣式 */
 .badge {
   display: inline-block;
   background: #ff8a7a;
@@ -178,6 +165,7 @@ html, body {
   margin: 12px 0 18px 0;
   line-height: 1.35;
   text-shadow: 2px 2px 0px #cc5a4e, -2px -2px 0px #000000;
+  word-break: break-word;
 }
 
 .main-title span {
@@ -202,6 +190,8 @@ html, body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  word-break: break-word;
+  width: 100%;
 }
 
 .intro-box p {
@@ -230,7 +220,6 @@ html, body {
   box-shadow: 0 8px 0px #a84f46;
 }
 
-/* 遊戲內文與選項按鈕 */
 #node-title {
   color: #f2c94c;
   font-size: 1.7rem;
@@ -244,6 +233,7 @@ html, body {
   display: inline-block;
   width: 100%;
   border-top: 1px solid #3d4756;
+  word-break: break-word;
 }
 
 .options-group {
@@ -251,6 +241,7 @@ html, body {
   flex-direction: column;
   gap: 14px;
   margin-top: 15px;
+  width: 100%;
 }
 
 .option-btn {
@@ -268,6 +259,7 @@ html, body {
   font-family: "標楷體", "BiauKai", DFKai-SB, serif;
   box-shadow: 0 6px 0px #9e7545;
   transition: all 0.15s ease-in-out;
+  word-break: break-word;
 }
 
 .option-btn:hover {
@@ -289,7 +281,7 @@ html, body {
   box-shadow: 0 9px 0px #a84f46;
 }
 
-/* 新聞報導與留言區樣式 */
+/* 新聞與留言區樣式 */
 .news-section {
   text-align: center;
   background: #232830;
@@ -313,10 +305,11 @@ html, body {
   margin: 10px 0;
   line-height: 1.4;
   text-align: center;
-  min-height: 3.6rem; /* 💡 固定標題最小高度，確保兩張卡片的標題區塊高度一致 */
+  min-height: 3.6rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  word-break: break-word;
 }
 
 .news-meta {
@@ -326,7 +319,6 @@ html, body {
   text-align: center;
 }
 
-/* 💡 灰色摘要文字框加上 flex: 1，自動伸縮以確保內部框與按鈕完美對齊 */
 .news-excerpt {
   font-size: 1.05rem;
   color: #d1d5db;
@@ -341,9 +333,9 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: center;
+  word-break: break-word;
 }
 
-/* 報導連結按鈕 */
 .news-link-btn {
   display: block;
   text-align: center;
@@ -358,6 +350,7 @@ html, body {
   box-shadow: 0 5px 0px #a84f46;
   transition: all 0.2s ease;
   margin-top: auto;
+  word-break: break-word;
 }
 
 .news-link-btn:hover {
@@ -381,6 +374,7 @@ html, body {
   flex-direction: column;
   gap: 14px;
   margin-bottom: 24px;
+  width: 100%;
 }
 
 .comment-input-group input {
@@ -391,6 +385,7 @@ html, body {
   border-radius: 18px;
   font-family: "標楷體", "BiauKai", DFKai-SB, serif;
   font-size: 1.15rem;
+  width: 100%;
 }
 
 .comment-input-group input:focus {
@@ -410,6 +405,7 @@ html, body {
   font-size: 1.2rem;
   box-shadow: 0 6px 0px #a84f46;
   transition: all 0.15s ease;
+  width: 100%;
 }
 
 .comment-input-group button:hover {
@@ -424,6 +420,7 @@ html, body {
   display: flex;
   flex-direction: column;
   gap: 14px;
+  width: 100%;
 }
 
 .comment-card {
@@ -431,6 +428,7 @@ html, body {
   padding: 18px 20px;
   border-radius: 18px;
   border-left: 6px solid #d89c5c;
+  word-break: break-word;
 }
 
 .comment-header {
@@ -457,4 +455,69 @@ html, body {
   color: #f2c94c;
   font-size: 1.1rem;
   font-weight: bold;
+}
+
+/* ==========================================
+   📱 手機強效防跑版響應式設計（RWD）
+   ========================================== */
+@media screen and (max-width: 768px) {
+  body {
+    padding: 10px 5px;
+    gap: 14px;
+  }
+
+  .game-card {
+    padding: 16px 12px;
+    border-radius: 16px;
+    border-width: 3px;
+    width: 100%;
+  }
+
+  /* 手機上外框同樣緊貼圖片大小，並自動縮放不跑版 */
+  .story-img-container {
+    display: inline-block;
+    width: auto;
+    max-width: 100%;
+  }
+
+  .story-img {
+    max-height: 240px;
+    width: 100%;
+    object-fit: contain;
+  }
+
+  .ending-grid-layout {
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+  }
+
+  .main-title {
+    font-size: 1.5rem;
+  }
+
+  .main-title span {
+    font-size: 1rem;
+  }
+
+  .story-text {
+    font-size: 1rem;
+    padding: 12px;
+    line-height: 1.7;
+  }
+
+  .intro-box {
+    font-size: 0.95rem;
+    padding: 14px;
+  }
+
+  .option-btn, .start-btn, .news-link-btn, .comment-input-group button {
+    font-size: 1rem;
+    padding: 12px;
+  }
+
+  .comment-input-group input {
+    font-size: 1rem;
+    padding: 12px;
+  }
 }
