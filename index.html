@@ -13,71 +13,68 @@
     <div class="badge">文字互動解謎遊戲</div>
     <h1 class="main-title">拯救動物大作戰<br><span>花蓮志工調查檔案</span></h1>
     
-    <!-- 左右並排容器：左側文字、右側圖片 -->
-    <div class="start-content-layout">
-      <div class="start-text-side">
+    <!-- 上下堆疊容器：圖片在上、文字與按鈕在下 -->
+    <div class="start-content-layout" style="flex-direction: column; align-items: center; gap: 24px;">
+      
+      <!-- 上方：首頁插圖 -->
+      <div class="start-img-side" style="width: 100%; justify-content: center;">
+        <div class="story-img-container">
+          <img src="https://github.com/ling11250/animal-game-images/blob/main/story.png?raw=true" alt="故事背景插圖" class="story-img">
+        </div>
+      </div>
+
+      <!-- 下方：背景故事介紹框與開始按鈕 -->
+      <div class="start-text-side" style="width: 100%;">
         <div class="intro-box">
           <p><strong>【故事背景】</strong></p>
           <p>花蓮吉安鄉近期發生多起幼貓領養後失聯事件。一名江姓男子在短短數月內接連領養了 10 隻幼貓，隨後開始神隱、不讀不回，多隻貓咪性命堪憂、生死未卜……</p>
           <p>你將扮演花蓮當地的獨立動保志工<strong>「阿偉」</strong>，透過調查、溝通與舉證，一步步揭開真相。你的每一個選擇，都將決定貓咪的命運！</p>
         </div>
+        <button class="start-btn" onclick="startGame()">開始調查</button>
       </div>
-      <div class="start-img-side">
-        <div class="story-img-container">
-          <img src="https://github.com/ling11250/animal-game-images/blob/main/story.png?raw=true" alt="故事背景插圖" class="story-img">
-        </div>
-      </div>
-    </div>
 
-    <button class="start-btn" onclick="startGame()">開始調查</button>
+    </div>
   </div>
 
   <!-- 2. 遊戲主體畫面 -->
   <div id="game-screen" class="game-card hidden">
     <h2 id="node-title"></h2>
     
-    <!-- 左右並排容器：左側內文與選項、右側動態圖片 -->
-    <div class="game-content-layout">
-      <!-- 左側：故事文字與選項按鈕 -->
-      <div class="game-text-side">
+    <div class="game-content-layout" style="flex-direction: column; align-items: center; gap: 24px;">
+      
+      <!-- 上方：劇情插圖 -->
+      <div class="game-img-side" style="width: 100%; justify-content: center;">
+        <div class="story-img-container">
+          <img id="node-img" src="" alt="劇情插圖" class="story-img">
+        </div>
+      </div>
+
+      <!-- 下方：故事文字與選項按鈕 -->
+      <div class="game-text-side" style="width: 100%;">
         <div class="story-text-wrapper">
           <div id="story-text" class="story-text"></div>
         </div>
         <div id="options-container" class="options-group"></div>
       </div>
-      <!-- 右側：劇情插圖 -->
-      <div class="game-img-side">
-        <div class="story-img-container">
-          <img id="node-img" src="" alt="劇情插圖" class="story-img">
-        </div>
-      </div>
+
     </div>
   </div>
 
-  <!-- 3. 🎯 結局專屬：新聞報導與動保議題分享（左右並排區塊） -->
-  <div id="ending-reports-container" class="ending-grid-layout hidden">
+  <!-- 3. 🎯 結局專屬：新聞報導（已撤下浪愛有家，改為單獨或獨立顯示） -->
+  <div id="ending-reports-container" class="ending-grid-layout hidden" style="flex-direction: column; align-items: center;">
     <!-- 📰 新聞報導卡片 -->
-    <div class="game-card news-section">
+    <div class="game-card news-section" style="max-width: 960px; width: 100%;">
       <div class="news-badge">📰 事件相關新聞報導</div>
       <h3 class="news-title">爆料／驚爆連續虐殺？花蓮男疑領養10隻幼貓「多隻慘死、失聯」 網怒轟：甩鍋給流浪狗</h3>
       <p class="news-meta">來源：創新聞 (ProNews) | 2026-09-15</p>
       <p class="news-excerpt">花蓮縣吉安鄉驚傳疑似連續虐殺動物案件！民眾爆料一名住在吉安鄉的江姓男子，近年來透過不同管道與民間中途志工，前後領養高達 10 隻貓咪，隨後神隱拒不交代貓隻去向。經志工比對時間軸，已有多隻貓咪確定死亡，其餘則下落不明……</p>
       <a href="https://pronews.tw/2026/09/15/310906/" target="_blank" class="news-link-btn">🔗 閱讀創新聞完整報導文章</a>
     </div>
-
-    <!-- 🐾 動保議題分享：浪愛有家中途貓協會 -->
-    <div class="game-card news-section">
-      <div class="news-badge" style="background: #d89c5c; color: #fff;">🐾 動保議題深度觀點</div>
-      <h3 class="news-title">從「TNR 無效」到「餵食癖」：一套正在逼走管理者的反餵養敘事</h3>
-      <p class="news-meta">來源：浪愛有家中途貓協會</p>
-      <p class="news-excerpt">近年來社會出現針對流浪動物餵養與 TNR 的攻擊性說法，從否定 TNR 有效性、切斷 TNR 與餵養關聯，到人格污名化。這套論述本質是逼退管理者、製造更大危機。真正傷害生態的從來不是管理式餵養，而是逼人離場後讓動物被迫靠獵殺維生。</p>
-      <a href="https://www.facebook.com/share/p/16B64xY815/" target="_blank" class="news-link-btn" style="background: #3a4454;">🔗 閱讀浪愛有家中途貓協會原文</a>
-    </div>
   </div>
 
-  <!-- 4. 💬 結局專屬：跨裝置留言區（可與上方報導並排或獨立寬幅展示） -->
+  <!-- 4. 💬 結局專屬：跨裝置留言區 -->
   <div id="comment-section" class="game-card comment-section hidden">
-    <h3>🎉 任務結束！志工討論區（跨裝置即時連線）</h3>
+    <h3>🎉 任務結束！歡迎留下你的破關心得</h3>
     
     <div class="comment-input-group">
       <input type="text" id="comment-name" placeholder="你的暱稱" maxlength="10">
