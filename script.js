@@ -94,6 +94,7 @@ window.startGame = function() {
   document.getElementById("game-screen").classList.remove("hidden");
   document.getElementById("ending-reports-container").classList.add("hidden");    
   document.getElementById("comment-section").classList.add("hidden"); 
+  document.getElementById("restart-screen-section").classList.add("hidden"); 
   renderNode("start");
 };
 
@@ -102,6 +103,7 @@ function renderNode(nodeKey) {
     document.getElementById("game-screen").classList.add("hidden");
     document.getElementById("ending-reports-container").classList.add("hidden");    
     document.getElementById("comment-section").classList.add("hidden"); 
+    document.getElementById("restart-screen-section").classList.add("hidden"); 
     document.getElementById("start-screen").classList.remove("hidden");
     window.scrollTo({ top: 0, behavior: 'smooth' });
     return;
@@ -122,22 +124,41 @@ function renderNode(nodeKey) {
   }
 
   const optionsContainer = document.getElementById("options-container");
+  const restartContainer = document.getElementById("ending-restart-container");
+  
   optionsContainer.innerHTML = "";
-
-  node.options.forEach(opt => {
-    const btn = document.createElement("button");
-    btn.className = "option-btn" + (nodeKey.startsWith("end") ? " restart-btn" : "");
-    btn.innerText = opt.text;
-    btn.onclick = () => renderNode(opt.next);
-    optionsContainer.appendChild(btn);
-  });
+  restartContainer.innerHTML = "";
 
   if (nodeKey.startsWith("end")) {
+    // 🎯 結局頁面：顯示新聞、留言區，以及最底部的獨立重新開始按鈕
     document.getElementById("ending-reports-container").classList.remove("hidden");
     document.getElementById("comment-section").classList.remove("hidden");
+    document.getElementById("restart-screen-section").classList.remove("hidden");
+
+    node.options.forEach(opt => {
+      const btn = document.createElement("button");
+      btn.className = "option-btn restart-btn";
+      btn.style.width = "100%";
+      btn.style.padding = "18px";
+      btn.style.fontSize = "1.2rem";
+      btn.style.textAlign = "center";
+      btn.innerText = opt.text;
+      btn.onclick = () => renderNode(opt.next);
+      restartContainer.appendChild(btn);
+    });
   } else {
+    // 🧭 一般中途節點：隱藏結局與留言區，顯示選項在遊戲卡片內
     document.getElementById("ending-reports-container").classList.add("hidden");
     document.getElementById("comment-section").classList.add("hidden");
+    document.getElementById("restart-screen-section").classList.add("hidden");
+
+    node.options.forEach(opt => {
+      const btn = document.createElement("button");
+      btn.className = "option-btn";
+      btn.innerText = opt.text;
+      btn.onclick = () => renderNode(opt.next);
+      optionsContainer.appendChild(btn);
+    });
   }
 }
 
