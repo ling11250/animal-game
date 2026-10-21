@@ -13,17 +13,13 @@
     <div class="badge">文字互動解謎遊戲</div>
     <h1 class="main-title">拯救動物大作戰<br><span>花蓮志工調查檔案</span></h1>
     
-    <!-- 上下堆疊容器：圖片在上、文字與按鈕在下 -->
     <div class="start-content-layout" style="flex-direction: column; align-items: center; gap: 24px;">
-      
-      <!-- 上方：首頁插圖 -->
       <div class="start-img-side" style="width: 100%; justify-content: center;">
         <div class="story-img-container">
           <img src="https://github.com/ling11250/animal-game-images/blob/main/story.png?raw=true" alt="故事背景插圖" class="story-img">
         </div>
       </div>
 
-      <!-- 下方：背景故事介紹框與開始按鈕 -->
       <div class="start-text-side" style="width: 100%;">
         <div class="intro-box">
           <p><strong>【故事背景】</strong></p>
@@ -32,7 +28,6 @@
         </div>
         <button class="start-btn" onclick="startGame()">開始調查</button>
       </div>
-
     </div>
   </div>
 
@@ -41,28 +36,23 @@
     <h2 id="node-title"></h2>
     
     <div class="game-content-layout" style="flex-direction: column; align-items: center; gap: 24px;">
-      
-      <!-- 上方：劇情插圖 -->
       <div class="game-img-side" style="width: 100%; justify-content: center;">
         <div class="story-img-container">
           <img id="node-img" src="" alt="劇情插圖" class="story-img">
         </div>
       </div>
 
-      <!-- 下方：故事文字與選項按鈕 -->
       <div class="game-text-side" style="width: 100%;">
         <div class="story-text-wrapper">
           <div id="story-text" class="story-text"></div>
         </div>
         <div id="options-container" class="options-group"></div>
       </div>
-
     </div>
   </div>
 
-  <!-- 3. 🎯 結局專屬：新聞報導（已撤下浪愛有家，改為單獨或獨立顯示） -->
+  <!-- 3. 🎯 結局專屬：新聞報導 -->
   <div id="ending-reports-container" class="ending-grid-layout hidden" style="flex-direction: column; align-items: center;">
-    <!-- 📰 新聞報導卡片 -->
     <div class="game-card news-section" style="max-width: 960px; width: 100%;">
       <div class="news-badge">📰 事件相關新聞報導</div>
       <h3 class="news-title">爆料／驚爆連續虐殺？花蓮男疑領養10隻幼貓「多隻慘死、失聯」 網怒轟：甩鍋給流浪狗</h3>
@@ -85,6 +75,12 @@
     <div id="comments-list" class="comments-list">
       <div class="loading-text">留言載入中...</div>
     </div>
+  </div>
+
+  <!-- 5. 🔄 結局專屬：最下方的獨立重新開始按鈕區塊 -->
+  <div id="restart-screen-section" class="game-card hidden" style="background: #1e232a; text-align: center; padding: 30px;">
+    <p style="color: #a0aab8; margin-bottom: 15px; font-size: 1.05rem;">— 準備好再次挑戰其他結局了嗎？ —</p>
+    <div id="ending-restart-container" style="width: 100%;"></div>
   </div>
 
   <!-- 引入 Firebase SDK (Module 模式) -->
