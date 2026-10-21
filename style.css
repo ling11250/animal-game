@@ -97,7 +97,6 @@ html, body {
   width: 100%;
 }
 
-/* 💡 讓外框嚴格貼合圖片大小的設定 */
 .story-img-container {
   display: inline-block;
   width: auto;
@@ -121,20 +120,19 @@ html, body {
 }
 
 /* ==========================================
-   📰 結局雙報導左右並排容器
+   📰 結局報導容器
    ========================================== */
 .ending-grid-layout {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   gap: 24px;
   max-width: 960px;
   width: 100%;
-  align-items: stretch;
+  align-items: center;
 }
 
 .ending-grid-layout .game-card {
-  flex: 1;
-  max-width: none;
+  max-width: 960px;
   width: 100%;
   margin: 0;
   display: flex;
@@ -198,6 +196,9 @@ html, body {
   margin: 8px 0;
 }
 
+/* ==========================================
+   🕹️ 按鍵回饋與互動特效（加入點擊變色與下壓延遲）
+   ========================================== */
 .start-btn {
   width: 100%;
   background: linear-gradient(135deg, #ff8a7a 0%, #e57368 100%);
@@ -210,7 +211,7 @@ html, body {
   border-radius: 22px;
   cursor: pointer;
   box-shadow: 0 6px 0px #a84f46;
-  transition: all 0.15s ease-in-out;
+  transition: all 0.12s ease-in-out; /* 增加過渡動畫時間 */
   margin-top: 20px;
 }
 
@@ -218,6 +219,13 @@ html, body {
   background: #ff9a8d;
   transform: translateY(-2px);
   box-shadow: 0 8px 0px #a84f46;
+}
+
+/* 💡 按下當下的反白、變色與下壓回饋特效 */
+.start-btn:active {
+  background: #cc5a4e !important;
+  transform: translateY(4px);
+  box-shadow: 0 2px 0px #80312a;
 }
 
 #node-title {
@@ -258,7 +266,7 @@ html, body {
   font-weight: bold;
   font-family: "標楷體", "BiauKai", DFKai-SB, serif;
   box-shadow: 0 6px 0px #9e7545;
-  transition: all 0.15s ease-in-out;
+  transition: all 0.12s ease-in-out; /* 增加過渡動畫時間 */
   word-break: break-word;
 }
 
@@ -267,6 +275,14 @@ html, body {
   color: #000000;
   transform: translateY(-3px);
   box-shadow: 0 9px 0px #9e7545;
+}
+
+/* 💡 選項按鈕按下時的變色與下壓特效 */
+.option-btn:active {
+  background: #b8864f !important;
+  color: #ffffff !important;
+  transform: translateY(3px);
+  box-shadow: 0 2px 0px #614424;
 }
 
 .restart-btn {
@@ -279,6 +295,13 @@ html, body {
 .restart-btn:hover {
   background: #ff9a8d;
   box-shadow: 0 9px 0px #a84f46;
+}
+
+/* 💡 重新開始按鈕按下時的變色與下壓特效 */
+.restart-btn:active {
+  background: #cc5a4e !important;
+  transform: translateY(3px);
+  box-shadow: 0 2px 0px #80312a;
 }
 
 /* 新聞與留言區樣式 */
@@ -348,7 +371,7 @@ html, body {
   font-size: 1.05rem;
   border: 2px solid #ffffff;
   box-shadow: 0 5px 0px #a84f46;
-  transition: all 0.2s ease;
+  transition: all 0.15s ease;
   margin-top: auto;
   word-break: break-word;
 }
@@ -357,6 +380,11 @@ html, body {
   background: #ff9a8d;
   transform: translateY(-2px);
   box-shadow: 0 7px 0px #a84f46;
+}
+
+.news-link-btn:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0px #a84f46;
 }
 
 .comment-section h3 {
@@ -411,6 +439,11 @@ html, body {
 .comment-input-group button:hover {
   background: #ff9a8d;
   transform: translateY(-2px);
+}
+
+.comment-input-group button:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0px #a84f46;
 }
 
 .comments-list {
@@ -473,7 +506,6 @@ html, body {
     width: 100%;
   }
 
-  /* 手機上外框同樣緊貼圖片大小，並自動縮放不跑版 */
   .story-img-container {
     display: inline-block;
     width: auto;
