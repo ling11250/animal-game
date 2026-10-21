@@ -107,7 +107,6 @@ function renderNode(nodeKey) {
     return;
   }
 
-  // 畫面平滑滾動到頂部
   window.scrollTo({ top: 0, behavior: 'smooth' });
 
   const node = storyData[nodeKey];
@@ -133,7 +132,6 @@ function renderNode(nodeKey) {
     optionsContainer.appendChild(btn);
   });
 
-  // 🎯 結局頁面：同時顯示新聞報導與即時留言區
   if (nodeKey.startsWith("end")) {
     document.getElementById("ending-reports-container").classList.remove("hidden");
     document.getElementById("comment-section").classList.remove("hidden");
