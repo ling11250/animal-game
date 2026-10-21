@@ -130,7 +130,6 @@ function renderNode(nodeKey) {
   restartContainer.innerHTML = "";
 
   if (nodeKey.startsWith("end")) {
-    // 🎯 結局頁面：顯示新聞、留言區，以及最底部的獨立重新開始按鈕
     document.getElementById("ending-reports-container").classList.remove("hidden");
     document.getElementById("comment-section").classList.remove("hidden");
     document.getElementById("restart-screen-section").classList.remove("hidden");
@@ -143,11 +142,18 @@ function renderNode(nodeKey) {
       btn.style.fontSize = "1.2rem";
       btn.style.textAlign = "center";
       btn.innerText = opt.text;
-      btn.onclick = () => renderNode(opt.next);
+      
+      // 💡 加入 0.25 秒（250毫秒）的點擊延遲跳轉
+      btn.onclick = () => {
+        btn.style.opacity = "0.7"; // 點擊時讓按鈕變半透明作為回饋
+        setTimeout(() => {
+          renderNode(opt.next);
+        }, 250);
+      };
+
       restartContainer.appendChild(btn);
     });
   } else {
-    // 🧭 一般中途節點：隱藏結局與留言區，顯示選項在遊戲卡片內
     document.getElementById("ending-reports-container").classList.add("hidden");
     document.getElementById("comment-section").classList.add("hidden");
     document.getElementById("restart-screen-section").classList.add("hidden");
@@ -156,7 +162,15 @@ function renderNode(nodeKey) {
       const btn = document.createElement("button");
       btn.className = "option-btn";
       btn.innerText = opt.text;
-      btn.onclick = () => renderNode(opt.next);
+      
+      // 💡 一般選項加入 0.25 秒的點擊延遲跳轉
+      btn.onclick = () => {
+        btn.style.opacity = "0.7"; // 點擊時淡化回饋
+        setTimeout(() => {
+          renderNode(opt.next);
+        }, 250);
+      };
+
       optionsContainer.appendChild(btn);
     });
   }
