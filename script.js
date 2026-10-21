@@ -1,23 +1,28 @@
-// 引入 Firebase SDK
+// ==========================================
+// 1. Firebase 雲端資料庫連線設定
+// ==========================================
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-// ⚠️ 請替換成你在 Firebase 得到的專案設定 ⚠️
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_PROJECT_ID.appspot.com",
-  messagingSenderId: "YOUR_SENDER_ID",
-  appId: "YOUR_APP_ID"
+  apiKey: "AIzaSyCtltUcW00dGg0aXSn3vLSW0oi-JiNablA",
+  authDomain: "gxl14111.firebaseapp.com",
+  databaseURL: "https://gxl14111-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "gxl14111",
+  storageBucket: "gxl14111.firebasestorage.app",
+  messagingSenderId: "899747341463",
+  appId: "1:899747341463:web:661dbc9762030f2447f5d2",
+  measurementId: "G-W67K2BM2VM"
 };
 
-// 初始化 Firebase 與資料庫
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const commentsRef = collection(db, "comments");
 
-// 劇本資料
+
+// ==========================================
+// 2. 遊戲劇情節點資料 (Story Nodes)
+// ==========================================
 const storyData = {
   start: {
     title: "【疑雲叢生】",
@@ -80,7 +85,10 @@ const storyData = {
   }
 };
 
-// 點擊「開始調查」觸發
+
+// ==========================================
+// 3. 遊戲流程控制函數
+// ==========================================
 window.startGame = function() {
   document.getElementById("start-screen").classList.add("hidden");
   document.getElementById("game-screen").classList.remove("hidden");
@@ -89,7 +97,6 @@ window.startGame = function() {
   renderNode("start");
 };
 
-// 渲染遊戲節點與關卡判斷
 function renderNode(nodeKey) {
   if (nodeKey === "home") {
     document.getElementById("game-screen").classList.add("hidden");
@@ -99,6 +106,9 @@ function renderNode(nodeKey) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
     return;
   }
+
+  // 畫面平滑滾動到頂部
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 
   const node = storyData[nodeKey];
   document.getElementById("node-title").innerText = node.title;
@@ -123,7 +133,7 @@ function renderNode(nodeKey) {
     optionsContainer.appendChild(btn);
   });
 
-  // 🎯 結局頁面：同時顯示雙報導區塊與留言區
+  // 🎯 結局頁面：同時顯示新聞報導與即時留言區
   if (nodeKey.startsWith("end")) {
     document.getElementById("ending-reports-container").classList.remove("hidden");
     document.getElementById("comment-section").classList.remove("hidden");
@@ -133,7 +143,10 @@ function renderNode(nodeKey) {
   }
 }
 
-// 💬 發布留言到雲端資料庫
+
+// ==========================================
+// 4. Firebase 雲端留言系統函數
+// ==========================================
 window.postComment = async function() {
   const nameInput = document.getElementById("comment-name");
   const textInput = document.getElementById("comment-text");
@@ -159,7 +172,7 @@ window.postComment = async function() {
   }
 };
 
-// 💬 即時監聽與載入跨裝置留言
+// 即時監聽與載入跨裝置留言
 const q = query(commentsRef, orderBy("createdAt", "desc"));
 onSnapshot(q, (snapshot) => {
   const listDiv = document.getElementById("comments-list");
@@ -178,11 +191,20 @@ onSnapshot(q, (snapshot) => {
     card.className = "comment-card";
     card.innerHTML = `
       <div class="comment-header">
-        <strong>${data.name}</strong>
+        <strong>${escapeHtml(data.name)}</strong>
         <span>${timeStr}</span>
       </div>
-      <div class="comment-content">${data.text}</div>
+      <div class="comment-content">${escapeHtml(data.text)}</div>
     `;
     listDiv.appendChild(card);
   });
 });
+
+// 簡易跳脫字元防範 XSS
+function escapeHtml(str) {
+  return str.replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+}
