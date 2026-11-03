@@ -27,7 +27,7 @@ const storyData = {
   start: {
     title: "【疑雲叢生】",
     image: "https://github.com/ling11250/animal-game-images/blob/main/node0.jpg?raw=true",
-    text: "社團內有志工發起警訊，表示送給江男的幼貓已經超過一個月沒有回報近況。",
+    text: "社團內有志工發起警訊，表示送給江男的幼貓已經超過一個月沒有回報近況。\n\n面對這個可疑的狀況，你決定採取什麼行動？",
     options: [
       { text: "私下聯繫其他送養人，串聯大家手中的證據。", next: "nodeA" },
       { text: "直接到江男的個人臉書貼文下留言質問：「貓到底在哪裡？給個交代！」", next: "nodeB" }
@@ -36,7 +36,7 @@ const storyData = {
   nodeA: {
     title: "【時間軸與對話紀錄】",
     image: "https://raw.githubusercontent.com/ling11250/animal-game-images/main/nodeA.jpg",
-    text: "你成功串聯了5位送養人，發現領養的貓均死亡或失聯！此時，江男主動在臉書社團「花蓮人」發文，稱「貓是被流浪狗咬死的，不干我的事」。",
+    text: "你成功串聯了5位送養人，發現領養的貓均死亡或失聯！此時，江男主動在臉書社團「花蓮人」發文，稱「貓是被流浪狗咬死的，不干我的事」。\n\n看著他的狡辯，接下來你打算怎麼做？",
     options: [
       { text: "公開要求他出示診所看診藥袋、就醫紀錄或火化證明，並將所有資料備份。", next: "end1" },
       { text: "直接在貼文下大罵他虐貓，號召網友晚上去他的住處堵人。", next: "end4" }
@@ -45,7 +45,7 @@ const storyData = {
   nodeB: {
     title: "【打草驚蛇】",
     image: "https://raw.githubusercontent.com/ling11250/animal-game-images/main/nodeB.jpg",
-    text: "你在網路上的留言引來江男警覺，他私訊嗆你：「我只是沒做好居家防護貓跑掉，再亂講我要告你公然侮辱！」隨後迅速將你封鎖，並關閉個人版面。",
+    text: "你在網路上的留言引來江男警覺，他私訊嗆你：「我只是沒做好居家防護貓跑掉，再亂講我要告你公然侮辱！」隨後迅速將你封鎖，並關閉個人版面。\n\n面對他的封鎖與恐嚇，你決定：",
     options: [
       { text: "立刻停止網路對罵，轉為私下向動保處與警方檢舉，並提供現有的截圖。", next: "end2" },
       { text: "將江男的個資公佈到各大爆料社團，號召網民肉搜發動網暴。", next: "end3" }
@@ -54,34 +54,34 @@ const storyData = {
 
   // 🏆 結局一：完美結局
   end1: {
-    title: "🏆 結局一：【法網恢恢】",
+    title: "🏆結局一：【法網恢恢】",
     image: "https://raw.githubusercontent.com/ling11250/animal-game-images/main/end1.jpg",
-    text: "面對你列出的證據，江男完全拿不出證明。你將完整且具備法律效力的事證提交給花蓮縣動保處與警方。主管機關依法強制稽查，並依《動保法》第25條移送法辦，同時將其列入全台黑名單，徹底阻止了下一次的悲劇。",
-    options: [{ text: "🔄 重新開始（首頁）", next: "home" }]
+    text: "面對你列出的證據，江男完全拿不出證明。你將完整且具備法律效力的事證提交給花蓮縣動保處與警方。主管機關依法強制稽查，並依《動保法》第25條移送法辦，同時將其列入全台黑名單，徹底阻止了下一次的悲劇。\n\n🌟【正確解法解析】：此為本案的「正確結局」。真實動保案件中，必須透過私下串聯證據、保全時序與醫療紀錄走體制舉報，才能真正立案並強制執法。\n\n🔄本遊戲還有其他不同的結局與分支路線，點擊下方重新開始，去探索看看不同的選擇會導向什麼結果吧！",
+    options: [{ text: "🔄重新開始（首頁）", next: "home" }]
   },
 
   // ⚠️ 結局二：遺撼結局
   end2: {
-    title: "⚠️ 結局二：【打草驚蛇，真相沉大海】",
+    title: "⚠️結局二：【打草驚蛇，真相沉大海】",
     image: "https://raw.githubusercontent.com/ling11250/animal-game-images/main/end2.jpg",
-    text: "由於未及時搜集完整證據，江男斷聯並連夜搬離吉安鄉。動保處前往稽查時已人去樓空，因為缺乏關鍵證據，案件因此停擺，剩餘失聯貓咪的下落成為永遠的謎。",
-    options: [{ text: "🔄 重新開始（首頁）", next: "home" }]
+    text: "由於未及時搜集完整證據，江男斷聯並連夜搬離吉安鄉。動保處前往稽查時已人去樓空，因為缺乏關鍵證據，案件因此停擺，剩餘失聯貓咪的下落成為永遠的謎。\n\n💡【真實案件解析】：在公開貼文直接質疑會「打草驚蛇」。嫌疑人察覺後會立刻刪號搬遷並湮滅證據，導致正確搜證管道失效。\n\n🔄本遊戲還有其他不同的結局與分支路線，挑戰看看能否順利通關解鎖完美結局！",
+    options: [{ text: "🔄重新開始（首頁）", next: "home" }]
   },
 
   // 💣 結局三：壞結局
   end3: {
-    title: "💣 結局三：【兩敗俱傷！正義大翻車】",
+    title: "💣結局三：【兩敗俱傷！正義大翻車】",
     image: "https://raw.githubusercontent.com/ling11250/animal-game-images/main/end3.jpg",
-    text: "肉搜與網路公審引發暴力砸蛋，江男反手提告！輿論瞬間變成「網路霸凌爭議」，你面臨高額賠償與官司纏身，而貓咪真相反而被大眾徹底遺忘……",
-    options: [{ text: "🔄 重新開始（首頁）", next: "home" }]
+    text: "肉搜與網路公審引發暴力砸蛋，江男反手提告！輿論瞬間變成「網路霸凌爭議」，你面臨高額賠償與官司纏身，而貓咪真相反而被大眾徹底遺忘……\n\n💡【真實案件解析】：公開個資與號召網暴會觸犯個資法及妨害名譽。過度私刑常使加害人反手提告，導致社會焦點從虐貓案轉為網路霸凌，動保訴求徹底失焦。\n\n🔄本遊戲還有其他不同的結局與分支路線，挑戰看看能否順利通關解鎖完美結局！",
+    options: [{ text: "🔄重新開始（首頁）", next: "home" }]
   },
 
   // 🩸 結局四：慘烈結局
   end4: {
-    title: "🩸 結局四：【衝突升級！私刑正義的代價】",
+    title: "🩸結局四：【衝突升級！私刑正義的代價】",
     image: "https://raw.githubusercontent.com/ling11250/animal-game-images/main/end4.jpg",
-    text: "衝動號召現場堵人引發激烈衝突，江男持械防衛導致多人受傷。快打部隊將所有人逮捕，動保訴求被媒體定調為「治安聚眾滋事」，搜證徹底中斷，大作戰全面敗北！",
-    options: [{ text: "🔄 重新開始（首頁）", next: "home" }]
+    text: "衝動號召現場堵人引發激烈衝突，江男持械防衛導致多人受傷。快打部隊將所有人逮捕，動保訴求被媒體定調為「治安聚眾滋事」，搜證徹底中斷，大作戰全面敗北！\n\n💡【真實案件解析】：私下聚眾私刑無法合法救援動物，還容易因肢體衝突觸犯刑法。警方與媒體會將焦點轉向治安問題，使救援全面失敗。\n\n🔄本遊戲還有其他不同的結局與分支路線，挑戰看看能否順利通關解鎖完美結局！",
+    options: [{ text: "🔄重新開始（首頁）", next: "home" }]
   }
 };
 
@@ -143,9 +143,8 @@ function renderNode(nodeKey) {
       btn.style.textAlign = "center";
       btn.innerText = opt.text;
       
-      // 💡 加入 0.25 秒（250毫秒）的點擊延遲跳轉
       btn.onclick = () => {
-        btn.style.opacity = "0.7"; // 點擊時讓按鈕變半透明作為回饋
+        btn.style.opacity = "0.7";
         setTimeout(() => {
           renderNode(opt.next);
         }, 250);
@@ -163,9 +162,8 @@ function renderNode(nodeKey) {
       btn.className = "option-btn";
       btn.innerText = opt.text;
       
-      // 💡 一般選項加入 0.25 秒的點擊延遲跳轉
       btn.onclick = () => {
-        btn.style.opacity = "0.7"; // 點擊時淡化回饋
+        btn.style.opacity = "0.7";
         setTimeout(() => {
           renderNode(opt.next);
         }, 250);
